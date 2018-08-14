@@ -1,13 +1,22 @@
 {
   "name": "React-Demo",
   "version": "1.0.0",
-  "description": "React Follow along",
+  "description": "React follow-along",
+  "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "open:src": "babel-node tools/srcServer.js",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
+  },
   "author": "Shivam Amin",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
-    "jquery": "2.2.3",
+    "jquery": "^3.3.1",
     "react": "15.0.2",
     "react-dom": "15.0.2",
     "react-redux": "4.4.5",
@@ -18,6 +27,8 @@
     "toastr": "2.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/node": "^7.0.0-rc.1",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
     "babel-loader": "6.2.4",
