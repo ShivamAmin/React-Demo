@@ -14,9 +14,6 @@ export function updateCourseSuccess(course) {
   return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
-// Functions below handle asynchronous calls.
-// Each returns a function that accepts a dispatch.
-// These are used by redux-thunk to support asynchronous interactions.
 export function loadCourses() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
